@@ -29,21 +29,49 @@ function renderLicenseBadge(license) {
       return`[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
       break;
     default:
-      console.log('That license is not in our database, please try again.');
-      return `tryAgain`;
+      console.log('No license added');
+      return ``;
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-
+  switch (license) {
+    case 'apache':
+      return `https://opensource.org/licenses/Apache-2.0`;
+      break;
+    case 'boost':
+      return `https://www.boost.org/LICENSE_1_0.txt`;
+      break;
+    case 'eclipse':
+      return`https://opensource.org/licenses/EPL-1.0`;
+      break;
+    case 'ibm':
+      return`https://opensource.org/licenses/IPL-1.0`;
+      break;
+    case 'isc':
+      return`https://opensource.org/licenses/ISC`;
+      break;
+    case 'mit':
+      return`https://opensource.org/licenses/MIT`;
+      break;
+    default:
+      return ``;
+  }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
+  const badge = (renderLicenseBadge(license));
+  const link = (renderLicenseLink(license));
 
+  if (badge === '') {
+    return (`## license \n \n N/A`);
+  } else {  
+    return (`## license \n \n `, badge, `\n \n`, link);
+  }
 }
 
 // TODO: Create a function to generate markdown for README
@@ -54,5 +82,3 @@ function generateMarkdown(data) {
 }
 
 module.exports = generateMarkdown;
-
-renderLicenseBadge('aasd');
