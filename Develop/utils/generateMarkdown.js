@@ -37,7 +37,9 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  switch (license) {
+  let lowerLic = license.toLowerCase();
+
+  switch (lowerLic) {
     case 'apache':
       return `https://opensource.org/licenses/Apache-2.0`;
       break;
@@ -69,16 +71,34 @@ function renderLicenseSection(license) {
 
   if (badge === '') {
     return (`## license \n \n N/A`);
-  } else {  
-    return (`## license \n \n `, badge, `\n \n`, link);
+  } else {
+    return (`## license \n \n  ${badge} \n \n ${link}`);
   }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
+  ${data.purpose}
 
+  ## Description
+
+  ${data.description}
+
+  ## Installation
+
+  ${data.install}
+
+  ${data.deployed}
+
+  ## Usage
+
+  ${data.usage}
+
+  ${renderLicenseSection(data.license)}
 `;
 }
 
 module.exports = generateMarkdown;
+
+renderLicenseSection('mit')
