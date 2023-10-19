@@ -81,21 +81,51 @@ function generateMarkdown(data) {
   return `# ${data.title}
   ${data.purpose}
 
+  ${renderLicenseBadge(data.license)}
+
   ## Description
 
   ${data.description}
+  
+  ## Table of Contents
+  #### [Installation](#installation)
+  #### [Usage](#usage)
+  #### [License](#license)
+  #### [Credits](#credits)
+  #### [Tests](#tests)
+  #### [Questions](#questions)
 
+  <a id='installation'></a>
   ## Installation
 
-  ${data.install}
+  [Install Location](${data.install})
 
-  ${data.deployed}
+  [Deployed Webpage](${data.deployed})
 
+  <a id='usage'></a>
   ## Usage
 
   ${data.usage}
 
+  <a id='credits'></a>
+  ## Credits
+
+  ${data.credits}
+
+  <a id='license'></a>
   ${renderLicenseSection(data.license)}
+
+  <a id='tests'></a>
+  ## Tests
+
+  ${data.tests}
+
+  <a id='questions'></a>
+  ## Questions?
+
+  [GitHub](${data.github})
+
+  [Email](${data.email})
 `;
 }
 
